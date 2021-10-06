@@ -15,7 +15,7 @@ Calendar API to fetch upcoming events.
 
 ## User Stories
 
-#### Feature 1: Filter Events by City
+### Feature 1: Filter Events by City
 
 ***User Story:*** As a user, I should be able to filter events by city so that I can see the list of events that take place in that city
 
@@ -34,7 +34,7 @@ Calendar API to fetch upcoming events.
 - *When:* the user selects a city (i.e. “Richmond, VA”) from the list
 - *Then:* the city should be changed to the city selected, and the user should receive a list of upcoming events in said city
 
-#### Feature 2: Show/Hide an Event’s Details
+### Feature 2: Show/Hide an Event’s Details
 
 ***User Story:*** As a user, I should be able to show/hide an event’s details so that I can view more or less details for events
 
@@ -54,7 +54,7 @@ Calendar API to fetch upcoming events.
 - *When:* the user clicks on the event (or toggle button)
 - *Then:* the user should be able to collapse the element and hide the event details
 
-#### Feature 3: Specify the Number of Events
+### Feature 3: Specify the Number of Events
 
 ***User Story:*** As a user, I should be able to specify the number of events listed so that I can view more or less events 
 
@@ -68,7 +68,7 @@ Calendar API to fetch upcoming events.
 - *When:* the user clicks on the event (or toggle button)
 - *Then:* the user should be able to show/hide the event details
 
-#### Feature 4: Use the Application Offline 
+### Feature 4: Use the Application Offline 
 
 ***User Story:*** As a user, I should be able to use the app offline so that I can utilize the app with or without internet
 
@@ -81,7 +81,7 @@ Calendar API to fetch upcoming events.
 - *When:* the user changes the app settings 
 - *Then:* the app should be able to display an error message
 
-#### Feature 5: Data Visualization 
+### Feature 5: Data Visualization 
 
 ***User Story:*** As a user, I should be able to see a chart that displays the number of upcoming events by city so that I can view events happening in any city in an organized way
 
