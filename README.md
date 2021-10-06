@@ -13,7 +13,9 @@ Calendar API to fetch upcoming events.
 - Add an app shortcut to the home screen.
 - View a chart showing the number of upcoming events by city.
 
-## User Stories
+---
+
+# User Stories
 
 ### Feature 1: Filter Events by City
 
@@ -44,8 +46,6 @@ Calendar API to fetch upcoming events.
 - *Given*: the main page has been opened and a list of events is displayed
 - *When:* the user sees that the event information is hidden
 - *Then:* the user should be able to click the event (or toggle button) and show/hide the event details
-
----
 
 *Scenario #2:* Users can expand an event to see its details
 - *Given*: the main page has been opened and a list of events is displayed
