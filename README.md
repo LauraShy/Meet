@@ -34,6 +34,8 @@ Calendar API to fetch upcoming events.
 - *When:* the user selects a city (i.e. “Richmond, VA”) from the list
 - *Then:* the city should be changed to the city selected, and the user should receive a list of upcoming events in said city
 
+---
+
 ### Feature 2: Show/Hide an Event’s Details
 
 ***User Story:*** As a user, I should be able to show/hide an event’s details so that I can view more or less details for events
@@ -43,6 +45,7 @@ Calendar API to fetch upcoming events.
 - *When:* the user sees that the event information is hidden
 - *Then:* the user should be able to click the event (or toggle button) and show/hide the event details
 
+---
 
 *Scenario #2:* Users can expand an event to see its details
 - *Given*: the main page has been opened and a list of events is displayed
@@ -53,6 +56,8 @@ Calendar API to fetch upcoming events.
 - *Given*: the user has clicked on an event to show event details
 - *When:* the user clicks on the event (or toggle button)
 - *Then:* the user should be able to collapse the element and hide the event details
+
+---
 
 ### Feature 3: Specify the Number of Events
 
@@ -68,6 +73,8 @@ Calendar API to fetch upcoming events.
 - *When:* the user clicks on the event (or toggle button)
 - *Then:* the user should be able to show/hide the event details
 
+---
+
 ### Feature 4: Use the Application Offline 
 
 ***User Story:*** As a user, I should be able to use the app offline so that I can utilize the app with or without internet
@@ -80,6 +87,8 @@ Calendar API to fetch upcoming events.
 - *Given*: the user didn’t have internet connection
 - *When:* the user changes the app settings 
 - *Then:* the app should be able to display an error message
+
+---
 
 ### Feature 5: Data Visualization 
 
