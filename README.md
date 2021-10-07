@@ -83,6 +83,7 @@ Calendar API to fetch upcoming events.
 - *Given*: the user didn’t have internet connection
 - *When:* the user opens the app
 - *Then:* the user should be able to see the last events viewed when it had an internet connection
+
 *Scenario #2:* Show error when user changes the settings (city, time range)
 - *Given*: the user didn’t have internet connection
 - *When:* the user changes the app settings 
