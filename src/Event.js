@@ -24,8 +24,8 @@ class Event extends Component {
     return (
       <Card>
         <Card.Body>
-          <Card.Title>{event.summary}</Card.Title>
-          <Card.Subtitle>{event.location}, {event.start.dateTime}</Card.Subtitle>
+        <Card.Title className="summary">{event.summary}</Card.Title>
+        <Card.Subtitle className="location">{event.location}, {event.start.dateTime}</Card.Subtitle>
           <div className="event-details">
             <Button className={`show-details-btn ${this.state.collapsed ? "show" : "hide"}`}
               onClick={this.handleShowDetails}

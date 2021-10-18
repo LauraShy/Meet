@@ -26,7 +26,7 @@ describe("<NumberOfEvents /> component", () => {
     NumberOfEventsWrapper.setState({
       numEvents: 15,
     });
-    const eventObject = { target: { newValue: 10 }};
+    const eventObject = { target: { value: 10 }};
     NumberOfEventsWrapper.find(".num-events").simulate("change", eventObject);
     expect(NumberOfEventsWrapper.state("numEvents")).toBe(10);
   });
