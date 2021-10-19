@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import './nprogress.css';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
-import NumberOfEvents from './NumberofEvents';
+import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import { mockData } from './mock-data';
 
