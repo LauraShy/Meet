@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './nprogress.css';
 import './App.css';
+
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import meet_logo from './images/meet_logo.png';
+import welcome_logo from './images/welcome_logo.png';
+
 import { extractLocations, getEvents } from './api';
 import { mockData } from './mock-data';
 
@@ -50,6 +53,9 @@ class App extends Component {
             <img src={meet_logo} className="meet-logo" alt="meet-logo"></img>
           </div>
           <div className="number-events"><NumberOfEvents /></div>
+        </div>
+        <div className="welcome-message">
+          <img src={welcome_logo} className="welcome-logo responsive" alt="welcome-message"></img>
         </div>
         <EventList events={this.state.events} />
       </div>

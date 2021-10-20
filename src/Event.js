@@ -28,16 +28,16 @@ class Event extends Component {
               <Card.Title className="summary"><b>Event: </b>{event.summary}</Card.Title>
               <Card.Subtitle className="location">
                 <p><b>Location: </b>{event.location}</p>
-                <p><b>Time: </b>{`${eventStart}`}</p>
+                <p><b>When: </b>{`${eventStart}`}</p>
               </Card.Subtitle>
               
               {
                 this.state.showDetails && (
-                  <Card.Text>
+                  <Card.Text className="card-text">
                     <p><b>About the Event: </b></p>
-                    <p className="event-description"><i>Description: </i>{event.description}</p>
-                    <p className="organizerEmail"><i>Organizer Email: </i>{event.organizer.email}</p>
-                    <p className="status"><i>Event Status: </i>{event.status}</p>  
+                    <p className="event-description"><b><i>Description: </i></b> {event.description}</p>
+                    <p className="organizerEmail"><b><i>Organizer Email: </i></b>{event.organizer.email}</p>
+                    <p className="status"><b><i>Event Status: </i></b>{event.status}</p>  
                   </Card.Text>
                 )
               }

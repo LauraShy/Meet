@@ -1,10 +1,28 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
+  background-image: url(./images/woods-background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
 }
 
 .App * {
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Comme-Light';
+  src: url('./images/comme.extralight.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, input, button {
+  font-family: 'Comme-Light';
 }
 
 ul {
@@ -89,7 +107,8 @@ input[type="number"] {
   bottom: 5px;
   padding: 5px 8px;
   margin-top: 10px;
-  background-color: #1D4355;
+  margin-bottom: 10px;
+  background-color: #6C9286;
   color: white;
 }
 
@@ -263,7 +282,7 @@ img.meet-logo {
 .EventList-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-top: 20px;
+  margin: 0px;
   justify-content: space-evenly;
 }
 
@@ -272,6 +291,11 @@ img.meet-logo {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .event-card {
+    padding: 15px !important;
+    font-size: smaller;
+    margin: 10px;
+  }
 }
 
 @media only screen and (max-width: 575px) {
@@ -279,13 +303,28 @@ img.meet-logo {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+  .event-card {
+    padding: 15px !important;
+    font-size: smaller;
+    margin: 10px;
+  }
 }
 
 .event-card {
   margin: 15px;
+  height: 90%;
   padding: 25px;
-  border-color: #1D4355;
-  border-width: 10px;
+  background-color: #1D4355;
+  color: white;
   border-radius: 5%;
-  background-color: #90a7b3;
+}
+
+img.welcome-logo {
+  align-items: center;
+  width: 60%;
+  max-width: 500px;
+}
+
+.card-text {
+  font-size: small;
 }
