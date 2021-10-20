@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
-  padding: 2% 5%;
 }
 
 .App * {
@@ -86,13 +85,12 @@ input[type="number"] {
 }
 
 .details-btn {
-  position: absolute;
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
-  border-radius: 4px;
-  outline: none;
-  cursor: pointer;
+  margin-top: 10px;
+  background-color: #1D4355;
+  color: white;
 }
 
 .name {
@@ -189,6 +187,7 @@ input[type="number"] {
   width: 18px;
   height: 18px;
 }
+
 .btn-text {
   float: right;
   margin: 11px 11px 0 0;
@@ -210,4 +209,83 @@ input[type="number"] {
     min-width: auto;
     margin: 0 auto;
   }
+}
+
+.header {
+  background-color: #6C9286;
+  width: 100%;
+}
+
+img.meet-logo {
+  height: 150px;
+}
+
+.search-number-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #6C9286;
+  width: 100%;
+  align-items: center;
+}
+
+.search {
+  order: 1;
+}
+
+.logo {
+  order: 2;
+}
+
+.number-events {
+  order: 3;
+}
+
+@media only screen and (max-width: 800px) {
+  .search-number-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr 1fr;
+  }
+  .search {
+    order: 2;
+  }
+  .logo {
+    order: 1;
+  }
+  .number-events {
+    padding-bottom: 20px;
+  }
+  img.meet_logo {
+    height: 100px;
+  }
+}
+
+.EventList-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 20px;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 800px) {
+  .EventList-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .EventList-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.event-card {
+  margin: 15px;
+  padding: 25px;
+  border-color: #1D4355;
+  border-width: 10px;
+  border-radius: 5%;
+  background-color: #90a7b3;
 }

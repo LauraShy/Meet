@@ -4,6 +4,7 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import meet_logo from './images/meet_logo.png';
 import { extractLocations, getEvents } from './api';
 import { mockData } from './mock-data';
 
@@ -41,8 +42,15 @@ class App extends Component {
     
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents />
+        <div className="search-number-grid">
+          <div className="search">
+            <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          </div>
+          <div className="logo">
+            <img src={meet_logo} className="meet-logo" alt="meet-logo"></img>
+          </div>
+          <div className="number-events"><NumberOfEvents /></div>
+        </div>
         <EventList events={this.state.events} />
       </div>
     );

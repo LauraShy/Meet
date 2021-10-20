@@ -1,50 +1,57 @@
 import React, { Component } from 'react';
 import { Button, Card } from 'react-bootstrap';
+import moment from 'moment';
 
 class Event extends Component {
   
   state = {
-    collapsed: true,
-  };
+    showDetails: false
+  }
 
-  handleShowDetails = () => {
-    this.setState({
-      collapsed: false,
-    });
-  };
-
-  handleHideDetails = () => {
-    this.setState({
-      collapsed: true,
-    });
+  handleDetails = () => {
+    if (this.state.showDetails === true) {
+      this.setState({ showDetails: false });
+    } else {
+      this.setState({ showDetails: true });
+    }
   };
 
   render() {
+
     const { event } = this.props;
+    const eventStart = moment(event.start.dateTime).format('MMMM Do YYYY, h:mm a');
+
     return (
-      <Card>
-        <Card.Body>
-        <Card.Title className="summary">{event.summary}</Card.Title>
-        <Card.Subtitle className="location">{event.location}, {event.start.dateTime}</Card.Subtitle>
-          <div className="event-details">
-            <Button className={`show-details-btn ${this.state.collapsed ? "show" : "hide"}`}
-              onClick={this.handleShowDetails}
-            >
-              Show Details
-            </Button>
-            <div className={`show-description ${this.state.collapsed ? "hide" : "show"}`}>
-              <h3>About the Event:</h3>
-              <p className="event-description">{event.description}</p>
-              <Button
-                className="hide-details-btn"
-                onClick={this.handleHideDetails}
-              >
-                Hide Details
-              </Button>
-            </div>    
-          </div>
-        </Card.Body>
-      </Card>
+      
+          <Card className="event-card">
+            <Card.Body>
+              <Card.Title className="summary"><b>Event: </b>{event.summary}</Card.Title>
+              <Card.Subtitle className="location">
+                <p><b>Location: </b>{event.location}</p>
+                <p><b>Time: </b>{`${eventStart}`}</p>
+              </Card.Subtitle>
+              
+              {
+                this.state.showDetails && (
+                  <Card.Text>
+                    <p><b>About the Event: </b></p>
+                    <p className="event-description"><i>Description: </i>{event.description}</p>
+                    <p className="organizerEmail"><i>Organizer Email: </i>{event.organizer.email}</p>
+                    <p className="status"><i>Event Status: </i>{event.status}</p>  
+                  </Card.Text>
+                )
+              }
+              <div className="event-button">
+                  <Button
+                    className='details-btn'
+                    variant="dark"
+                    onClick={() => this.handleDetails()}>
+                    {!this.state.showDetails ? 'Show Details' : 'Hide Details'}
+                  </Button>
+              </div>
+            </Card.Body>
+          </Card>
+        
     )
   }
 }
