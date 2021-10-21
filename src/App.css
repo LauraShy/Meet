@@ -54,7 +54,7 @@ input[type="number"] {
 }
 
 .city {
-  width: 250px;
+  width: 200px;
 }
 
 .CitySearch {
@@ -237,46 +237,6 @@ input[type="number"] {
 
 img.meet-logo {
   height: 150px;
-}
-
-.search-number-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  background-color: #6C9286;
-  width: 100%;
-  align-items: center;
-}
-
-.search {
-  order: 1;
-}
-
-.logo {
-  order: 2;
-}
-
-.number-events {
-  order: 3;
-}
-
-@media only screen and (max-width: 800px) {
-  .search-number-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 1fr;
-  }
-  .search {
-    order: 2;
-  }
-  .logo {
-    order: 1;
-  }
-  .number-events {
-    padding-bottom: 20px;
-  }
-  img.meet_logo {
-    height: 100px;
-  }
 }
 
 .EventList-grid {

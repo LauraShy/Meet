@@ -5,7 +5,7 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import meet_logo from './images/meet_logo.png';
+import Header from './Header';
 import welcome_logo from './images/welcome_logo.png';
 
 import { extractLocations, getEvents } from './api';
@@ -45,17 +45,13 @@ class App extends Component {
     
     return (
       <div className="App">
-        <div className="search-number-grid">
-          <div className="search">
-            <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-          </div>
-          <div className="logo">
-            <img src={meet_logo} className="meet-logo" alt="meet-logo"></img>
-          </div>
-          <div className="number-events"><NumberOfEvents /></div>
-        </div>
+        <Header />
         <div className="welcome-message">
           <img src={welcome_logo} className="welcome-logo responsive" alt="welcome-message"></img>
+        </div>
+        <div className="search-numEvents">
+          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          <NumberOfEvents />
         </div>
         <EventList events={this.state.events} />
       </div>
