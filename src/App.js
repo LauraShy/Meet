@@ -14,17 +14,23 @@ import { mockData } from './mock-data';
 class App extends Component {
   state = {
     events: [],
-    locations: []
+    locations: [],
+    numberOfEvents: 32,
+    currentLocation: "all"
   }
 
-  updateEvents = (location) => {
+  updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
         events.filter((event) => event.location === location);
-      this.setState({
-        events: locationEvents
-      });
+        const eventsToShow = locationEvents.slice(0, this.state.numberOfEvents);
+        if (this.mounted) {
+          this.setState({
+            events: eventsToShow,
+            currentLocation: location,
+          });
+        }
     });
   }
 
@@ -32,10 +38,19 @@ class App extends Component {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
+        this.setState({ 
+          events: events.slice(0, this.state.numberOfEvents), 
+          locations: extractLocations(events) 
+        });
       }
     });
   }
+
+  updateNumberOfEvents = async (e) => {
+    const newVal = e.target.value ? parseInt(e.target.value) : 32;
+    await this.setState({ numberOfEvents: newVal });
+    this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
+  };
 
   componentWillUnmount(){
     this.mounted = false;
@@ -51,7 +66,10 @@ class App extends Component {
         </div>
         <div className="search-numEvents">
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-          <NumberOfEvents />
+          <NumberOfEvents 
+           numberOfEvents={this.state.numberOfEvents}
+           updateNumberOfEvents={this.updateNumberOfEvents}
+          />
         </div>
         <EventList events={this.state.events} />
       </div>
