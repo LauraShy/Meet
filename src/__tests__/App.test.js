@@ -84,5 +84,17 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  
+  test('length of EvenList reflects the value of the imput in NumberOfEvents', async () => {
+    const AppWrapper = mount(<App />);
+
+    const eventObject = { target: {value: 15 } };
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+
+    NumberOfEventsWrapper.find(".num-events").simulate("change", eventObject);
+    expect(NumberOfEventsWrapper.props('numberOfEvents')).toBe(15);
+    expect(AppWrapper.state("events").length).toBe(15);
+    expect(AppWrapper.find(EventList).prop("events").length).toBe(15);
+
+    AppWrapper.unmount();
+  })
 });
