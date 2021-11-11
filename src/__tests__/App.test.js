@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import App from '../App';
+import Event from '../Event';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import { extractLocations, getEvents } from '../api';
@@ -85,15 +86,19 @@ describe('<App /> integration', () => {
   });
 
   test('length of EvenList reflects the value of the imput in NumberOfEvents', async () => {
+    const runAllPromises = () => new Promise(setImmediate);
     const AppWrapper = mount(<App />);
 
-    const eventObject = { target: {value: 15 } };
-    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 3 } };
+    AppWrapper.find(NumberOfEvents).find(".num-events")
+      .at(0)
+      .simulate("change", eventObject);
 
-    NumberOfEventsWrapper.find(".num-events").simulate("change", eventObject);
-    expect(NumberOfEventsWrapper.props('numberOfEvents')).toBe(15);
-    expect(AppWrapper.state("events").length).toBe(15);
-    expect(AppWrapper.find(EventList).prop("events").length).toBe(15);
+    await runAllPromises();
+    AppWrapper.update();
+
+    expect(AppWrapper.state("events").length).toBe(3);
+    expect(AppWrapper.find(EventList).find(Event).length).toBe(3);
 
     AppWrapper.unmount();
   })
