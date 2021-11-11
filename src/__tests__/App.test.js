@@ -85,7 +85,7 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  test('length of EvenList reflects the value of the imput in NumberOfEvents', async () => {
+  test('length of EventList reflects the value of the input in NumberOfEvents', async () => {
     const runAllPromises = () => new Promise(setImmediate);
     const AppWrapper = mount(<App />);
 

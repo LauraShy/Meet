@@ -1,6 +1,4 @@
 import puppeteer from 'puppeteer';
-import jest from 'jest-cucumber';
-import Event from '../Event';
 
 // FEATURE 2
 
@@ -18,27 +16,27 @@ describe('show/hide an event details', () => {
     });
     page = await browser.newPage();
     await page.goto('http://localhost:3000/');
-    await page.waitForSelector(Event);
+    await page.waitForSelector('.event-card');
   });
 
-  afterAll(() => {
+  afterAll(async () => {
     browser.close();
   });
 
   test('An event element is collapsed by default', async () => {
-    const eventDetails = await page.$(Event, '.card-text');
+    const eventDetails = await page.$('.event-card .card-text');
     expect(eventDetails).toBeNull();
   });
 
   test('User can expand an event to see its details', async () => {
-    await page.click(Event, '.details-btn');
-    const eventDetails = await page.$(Event, '.card-text')
+    await page.click('.event-card .details-btn');
+    const eventDetails = await page.$('.event-card .card-text')
     expect(eventDetails).toBeDefined();
   });
 
   test('User can collapse an event to hide its details', async () => {
-    await page.click(Event, '.details-btn');
-    const eventDetails = await page.$(Event, '.card-text')
+    await page.click('.event-card .details-btn');
+    const eventDetails = await page.$('.event-card .card-text')
     expect(eventDetails).toBeNull();
   });
 });
