@@ -9,6 +9,13 @@ class Alert extends Component {
   getStyle = () => {
     return {
       color: this.color,
+      display: 'block',
+      fontWeight: '600',
+      lineHeight: '25px',
+      position: "fixed",
+      top: '230px',
+      left: '10px',
+      padding: '20px',
     };
   }
 
