@@ -7,6 +7,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import Header from './Header';
 import welcome_logo from './images/welcome_logo.png';
+import { ErrorAlert } from './Alert';
 
 import { extractLocations, getEvents } from './api';
 import { mockData } from './mock-data';
@@ -48,8 +49,19 @@ class App extends Component {
 
   updateNumberOfEvents = async (e) => {
     const newVal = e.target.value ? parseInt(e.target.value) : 32;
-    await this.setState({ numberOfEvents: newVal });
-    this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
+    
+    if (newVal < 1 || newVal > 32) {
+      await this.setState({
+        errorText: 'Please choose a number between 1 and 32',
+        numberOfEvents: newVal,
+      });
+    } else {
+      await this.setState({
+        errorText: '',
+        numberOfEvents: newVal,
+      });
+      this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
+    }
   };
 
   componentWillUnmount(){
@@ -69,6 +81,7 @@ class App extends Component {
           <NumberOfEvents 
            numberOfEvents={this.state.numberOfEvents}
            updateNumberOfEvents={this.updateNumberOfEvents}
+           errorText ={this.state.errorText}
           />
         </div>
         <EventList events={this.state.events} />
