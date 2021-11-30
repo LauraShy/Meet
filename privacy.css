@@ -1,0 +1,11 @@
+body {
+  text-align: center;
+  background-image: url('/src/images/woods-background.jpg') !important;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  margin: 0px 
+}
