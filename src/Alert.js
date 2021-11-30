@@ -12,10 +12,8 @@ class Alert extends Component {
       display: 'block',
       fontWeight: '600',
       lineHeight: '25px',
-      position: "fixed",
-      top: '230px',
+      top: '200px',
       left: '10px',
-      padding: '20px',
     };
   }
 

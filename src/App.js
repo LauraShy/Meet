@@ -77,12 +77,12 @@ class App extends Component {
           <img src={welcome_logo} className="welcome-logo responsive" alt="welcome-message"></img>
         </div>
         <div className="search-numEvents">
-          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents 
            numberOfEvents={this.state.numberOfEvents}
            updateNumberOfEvents={this.updateNumberOfEvents}
            errorText ={this.state.errorText}
           />
+          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         </div>
         <EventList events={this.state.events} />
       </div>

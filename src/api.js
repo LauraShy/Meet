@@ -44,7 +44,7 @@ const checkToken = async (accessToken) => {
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
     .then((res) => res.json())
-    .catch((error) => error.json());
+    .catch((error) => console.log(error));
 
   return result;
 };
@@ -58,7 +58,7 @@ const getToken = async (code) => {
     .then((res) => {
       return res.json();
     })
-    .catch((error) => error);
+    .catch((error) => console.log(error));
 
   access_token && localStorage.setItem("access_token", access_token);
 

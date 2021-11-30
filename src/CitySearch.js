@@ -1,3 +1,4 @@
+import { normalizeUnits } from 'moment';
 import React, { Component } from 'react';
 import { InfoAlert } from './Alert';
 
@@ -16,11 +17,13 @@ class CitySearch extends Component {
     if (suggestions.length === 0) {
       this.setState({
         query: value,
-        infoText: 'We cannot find the city you are looking for. Please try another city'
+        infoText: 'We cannot find the city you are looking for. Please try another city',
+        showSuggestions: false
       });
     } else {
       return this.setState({
         query: value,
+        showSuggestions: true,
         suggestions,
         infoText: ''
       });
@@ -40,6 +43,7 @@ class CitySearch extends Component {
   render() {
     return (
       <div className="CitySearch">
+        <InfoAlert text={this.state.infoText} />
         <p className="city-search-text">Search for a City:</p>
         <input
           type="text"
@@ -48,7 +52,6 @@ class CitySearch extends Component {
           onChange={this.handleInputChanged}
           onFocus={() => { this.setState({ showSuggestions: true }) }}
         />
-        <InfoAlert text={this.state.infoText} />
         <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
           {this.state.suggestions.map((suggestion) => (
             <li 
