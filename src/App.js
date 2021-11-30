@@ -9,8 +9,8 @@ import Header from './Header';
 import welcome_logo from './images/welcome_logo.png';
 import { ErrorAlert } from './Alert';
 import { WarningAlert } from './Alert';
-
-import { extractLocations, getEvents } from './api';
+import WelcomeScreen from './WelcomeScreen';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { mockData } from './mock-data';
 
 class App extends Component {
@@ -18,7 +18,8 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 32,
-    currentLocation: "all"
+    currentLocation: "all",
+    showWelcomeScreen: undefined,
   }
 
   updateEvents = (location, eventCount) => {
@@ -36,16 +37,24 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ 
-          events: events.slice(0, this.state.numberOfEvents), 
-          locations: extractLocations(events) 
-        });
-      }
-    });
+
+    const accessToken = localStorage.getItem("access_token");
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events: events.slice(0, this.state.numberOfEvents),
+            locations: extractLocations(events),
+          });
+        }
+      });
+    }
   }
 
   updateNumberOfEvents = async (e) => {
@@ -70,7 +79,10 @@ class App extends Component {
   }
 
   render() {
-    
+    if (this.state.showWelcomeScreen === undefined) {
+      return <div className="App" />;
+    }
+
     return (
       <div className="App">
         <Header />
@@ -79,7 +91,7 @@ class App extends Component {
         </div>
 
         { !navigator.onLine ? (<WarningAlert text='You are offline!' />) : (<WarningAlert text=' ' />)}
-        
+
         <div className="search-numEvents">
           <NumberOfEvents 
            numberOfEvents={this.state.numberOfEvents}
@@ -89,6 +101,7 @@ class App extends Component {
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         </div>
         <EventList events={this.state.events} />
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
