@@ -8,6 +8,7 @@ import NumberOfEvents from './NumberOfEvents';
 import Header from './Header';
 import welcome_logo from './images/welcome_logo.png';
 import { ErrorAlert } from './Alert';
+import { WarningAlert } from './Alert';
 
 import { extractLocations, getEvents } from './api';
 import { mockData } from './mock-data';
@@ -76,6 +77,9 @@ class App extends Component {
         <div className="welcome-message">
           <img src={welcome_logo} className="welcome-logo responsive" alt="welcome-message"></img>
         </div>
+
+        { !navigator.onLine ? (<WarningAlert text='You are offline!' />) : (<WarningAlert text=' ' />)}
+        
         <div className="search-numEvents">
           <NumberOfEvents 
            numberOfEvents={this.state.numberOfEvents}

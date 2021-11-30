@@ -89,8 +89,13 @@ export const getEvents = async () => {
     return mockData;
   }
 
-  const token = await getAccessToken();
+  if (!navigator.onLine) {
+    const data = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return data?JSON.parse(data).events:[];;
+  }
 
+  const token = await getAccessToken();
   if (token) {
     removeQuery();
     const url = 'https://ytd9osr13i.execute-api.us-east-1.amazonaws.com/dev/api/get-events' + '/' + token;
