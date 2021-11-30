@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Comme-Light';
-  src: url('./images/comme.extralight.ttf');
+  src: url('/src/images/comme.extralight.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -20,4 +20,10 @@ body {
 
 section {
   background-color: rgba(255, 255, 255, 0.5);
+  margin: 0 30px 0 30px;
+}
+
+button {
+  background-color: #1D4355;
+  color: white;
 }
