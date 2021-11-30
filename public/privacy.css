@@ -1,6 +1,14 @@
+@font-face {
+  font-family: 'Comme-Light';
+  src: url('./images/comme.extralight.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
+  font: 'Comme-Light';
   text-align: center;
-  background-image: url('/src/images/woods-background.jpg') !important;
+  background-image: url('woods-background.jpg') !important;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -8,4 +16,8 @@ body {
   width: 100%;
   padding: 0px;
   margin: 0px 
+}
+
+section {
+  background-color: rgba(255, 255, 255, 0.5);
 }
