@@ -1,4 +1,3 @@
-import { normalizeUnits } from 'moment';
 import React, { Component } from 'react';
 import { InfoAlert } from './Alert';
 
