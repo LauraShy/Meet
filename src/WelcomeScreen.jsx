@@ -17,7 +17,7 @@ function WelcomeScreen(props) {
           className="welcome_logo"
           alt="Welcome to the Meet App!"
         />
-        <h4>Hello! Log in to see upcoming events around the world for Full Stack Developers</h4>
+        <h4 className="welcome_message">Hello! Log in to see upcoming events around the world for Full Stack Developers</h4>
         <div className="button_cont" align="center">
           <div class="google-btn">
             <div class="google-icon-wrapper">

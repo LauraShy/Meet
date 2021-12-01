@@ -80,3 +80,11 @@ body, input, button {
   color: #1D4355;
   font-weight: bolder;
 }
+
+.welcome_logo {
+  margin: 10px 20px 10px 20px;
+}
+
+.welcome_message {
+  margin: 0 10px 0 10px;
+}
