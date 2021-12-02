@@ -102,31 +102,33 @@ class App extends Component {
         </div>
 
         { !navigator.onLine ? (<WarningAlert text='You are offline!' />) : (<WarningAlert text=' ' />)}
+        <div className="landing-grid">
+          <div className="search-numEvents">
+            <NumberOfEvents 
+            numberOfEvents={this.state.numberOfEvents}
+            updateNumberOfEvents={this.updateNumberOfEvents}
+            errorText ={this.state.errorText}
+            />
+            <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          </div>
+          <div className="scatterchart-div">
+            <h4>Events in each city</h4>
 
-        <div className="search-numEvents">
-          <NumberOfEvents 
-           numberOfEvents={this.state.numberOfEvents}
-           updateNumberOfEvents={this.updateNumberOfEvents}
-           errorText ={this.state.errorText}
-          />
-          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+            <ScatterChart
+              width={400}
+              height={400}
+              margin={{
+                top: 20, right: 20, bottom: 20, left: 20,
+              }}
+            >
+              <CartesianGrid />
+              <XAxis type="category" dataKey="city" name="city" />
+              <YAxis type="number" dataKey="number" name="number of events" />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter data={this.getData()} fill="#1D4355" />
+            </ScatterChart>
+          </div>
         </div>
-        <h4>Events in each city</h4>
-
-         <ScatterChart
-          width={400}
-          height={400}
-          margin={{
-            top: 20, right: 20, bottom: 20, left: 20,
-          }}
-        >
-          <CartesianGrid />
-          <XAxis type="category" dataKey="city" name="city" />
-          <YAxis type="number" dataKey="number" name="number of events" />
-          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-          <Scatter data={this.getData()} fill="#8884d8" />
-        </ScatterChart>
-
         <EventList events={this.state.events} />
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
