@@ -123,17 +123,22 @@ class App extends Component {
             <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           </div>
           <div className="data-vis-wrapper">
-            <EventGenre events={this.state.events} />
-            <h4>Events in each city</h4>
-            <ResponsiveContainer height={400} >
-              <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }} >
-                <CartesianGrid />
-                <XAxis tick={{ fill: "#000000" }} type="category" dataKey="city" name="city" />
-                <YAxis allowDecimals={false} tick={{ fill: "#000000" }} type="number" dataKey="number" name="number of events" />
-                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter data={this.getData()} fill="#1D4355" />
-              </ScatterChart>
-            </ResponsiveContainer>
+            <div className="chart-1">
+              <h4>Events by Topic</h4>
+              <EventGenre events={this.state.events} />
+            </div>
+            <div className="chart-2">
+              <h4>Events in Each City</h4>
+              <ResponsiveContainer height={400} >
+                <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }} >
+                  <CartesianGrid />
+                  <XAxis tick={{ fill: "#000000" }} type="category" dataKey="city" name="city" />
+                  <YAxis allowDecimals={false} tick={{ fill: "#000000" }} type="number" dataKey="number" name="number of events" />
+                  <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                  <Scatter data={this.getData()} fill="#1D4355" />
+                </ScatterChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
         <EventList events={this.state.events} />
