@@ -234,3 +234,9 @@ img.welcome-logo {
   justify-content: center;
   text-align: center;
 }
+
+.search-numEvents, .scatterchart-div {
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
