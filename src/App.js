@@ -6,6 +6,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import Header from './Header';
+import EventGenre from './EventGenre';
 import welcome_logo from './images/welcome_logo.png';
 import { ErrorAlert } from './Alert';
 import { WarningAlert } from './Alert';
@@ -20,6 +21,7 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     currentLocation: "all",
+    warningText: '',
     showWelcomeScreen: undefined,
   }
 
@@ -55,15 +57,23 @@ class App extends Component {
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
+
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({
             events: events.slice(0, this.state.numberOfEvents),
-            locations: extractLocations(events),
+            locations: extractLocations(events)
           });
         }
+        if (!navigator.onLine) {
+          this.setState({ warningText: 'You are currently offline. Some of the apps features may be limited.' });
+          console.log("App is offline");
+        } else {
+          this.setState({ warningText: '' });
+        };
       });
     }
   }
@@ -97,11 +107,14 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <div className="welcome-message">
+          <img src={welcome_logo} className="welcome-logo responsive" alt="welcome-message"></img>
+        </div>
 
         { !navigator.onLine ? (<WarningAlert text='You are offline!' />) : (<WarningAlert text=' ' />)}
+        
         <div className="landing-grid">
           <div className="search-numEvents">
-          <img src={welcome_logo} className="welcome-logo responsive" alt="welcome-message"></img>
             <NumberOfEvents 
             numberOfEvents={this.state.numberOfEvents}
             updateNumberOfEvents={this.updateNumberOfEvents}
@@ -109,19 +122,14 @@ class App extends Component {
             />
             <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           </div>
-          <div className="scatterchart-div">
+          <div className="data-vis-wrapper">
+            <EventGenre events={this.state.events} />
             <h4>Events in each city</h4>
             <ResponsiveContainer height={400} >
-              <ScatterChart
-                margin={{
-                  top: 20, right: 10, bottom: 20, left: 10,
-                }}
-                stroke="#000000"
-                color="#000000"
-              >
+              <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }} >
                 <CartesianGrid />
-                <XAxis type="category" dataKey="city" name="city" />
-                <YAxis type="number" dataKey="number" name="number of events" />
+                <XAxis tick={{ fill: "#000000" }} type="category" dataKey="city" name="city" />
+                <YAxis allowDecimals={false} tick={{ fill: "#000000" }} type="number" dataKey="number" name="number of events" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                 <Scatter data={this.getData()} fill="#1D4355" />
               </ScatterChart>
