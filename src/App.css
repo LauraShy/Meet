@@ -159,7 +159,14 @@ img.meet-logo {
 
 .landing-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
+}
+
+@media only screen and (max-width: 800px) {
+  .landing-grid {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .EventList-grid {
