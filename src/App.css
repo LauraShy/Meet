@@ -144,20 +144,8 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-.data-vis-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
 .recharts-surface {
   overflow: visible;
-}
-
-@media only screen and (min-width: 992px) {
-  .data-vis-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 .header {
@@ -167,6 +155,11 @@ input[type="number"] {
 
 img.meet-logo {
   height: 150px;
+}
+
+.landing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .EventList-grid {
